@@ -31,11 +31,11 @@ jobs:
       uses: azure/docker-login@v1
       with:
         login-server: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}
-        username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
-        password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - name: Tag Docker image for ACR
-      run: docker tag my-image-name:latest ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/my-image-name:latest
+      run: docker tag my-image-name:latest ${{ secrets.REGISTRY_LOGIN_SERVER }}/my-image-name:latest
 
     - name: Push Docker image to ACR
-      run: docker push ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/my-image-name:latest
+      run: docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/my-image-name:latest
